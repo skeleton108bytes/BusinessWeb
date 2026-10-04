@@ -2,9 +2,9 @@
 margin:0; 
 padding:0; 
 } 
-#container 
-{ border:1px solid rgb(255, 255, 255); 
-background:rgb(112, 31, 31); 
+#container /* Thông tin thanh trên cùng */
+{ border:1px solid #659dbd; 
+background:#fbeec1; 
 float:right; 
 top: 60px; 
 text-indent:0px; 
@@ -23,14 +23,14 @@ float:left;
 #container ul li a 
 {  
 display:block; 
-color:black; 
+color:#bc986a; /* chữ hiện trên container */
 font-weight:bold;
 text-decoration:none; 
 padding:.3em 6px; 
 } 
-#container li a:hover 
+#container li a:hover /*Màu chữ và bg khi rê chuột vào */
 {color:white; 
-background:palevioletred; 
+background:#3f843e; 
 } 
 #container li ul 
 {position:absolute; 
@@ -44,9 +44,7 @@ width:10em
   width:100%; 
   border:1px solid green  
 }
-#container {
-    background-color:aquamarine;
-}
+/* Nền trang */
 body {
-  background-color: #f0f0f0;
+  background-color: #54bdff;
 }
