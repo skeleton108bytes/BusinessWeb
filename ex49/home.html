@@ -1,0 +1,126 @@
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title></title>
+  <style>
+        .custom-list {
+            list-style: none;
+            counter-reset: item;
+            }
+        .custom-list li {
+            counter-increment: item;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            }
+        .custom-list li::before {
+            content: counter(item) ") ";
+            font-weight: bold;
+            }
+  </style>
+</head>
+<body>
+    <body style="background-color: #99f6ff;">
+        <form name="my_form" id="my_form">
+            <h2 style="color: red;">Online Classifieds Search Form</h2>
+            <hr>
+            <ol class="custom-list">
+                <li>Search for a classified in the following sections:</li>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="radio" name="category" id="employment">
+                            <label for="employment">Employment</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="category" id="personal">
+                            <label for="personal">Personal</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="category" id="for_sale">
+                            <label for="for_sale">For Sale</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="category" id="miscellaneous">
+                            <label for="miscellaneous">Miscellaneous</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="category" id="housing">
+                            <label for="housing">Housing</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="category" id="all_of_the_above">
+                            <label for="all_of_the_above">All of the above</label>
+                        </td>
+                    </tr>
+                </table>
+                <li>Search the following publications:</li>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="Midwest times" id="MT">
+                            <label for="MT">Midwest times</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="Modern News" id="MN">
+                            <label for="MN">Modern News</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="Employment Today" id="ET">
+                            <label for="ET">Employment Today</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="Great Lakes Classifieds" id="GL">
+                            <label for="GL">Great Lakes Classifieds</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="Middleton Daily" id="MD">
+                            <label for="MD">Middleton Daily</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="Cashtown Daily News" id="CD">
+                            <label for="CD">Cashtown Daily News</label>
+                        </td>
+                    </tr>
+                </table>
+                <li>From <input type="date" style="width: 200px"> to <input type="date" style="width: 200px"></li>
+                <li>Enter a few keywords to describe the classified.</li>
+                <textarea style="width: 500px" rows="1"></textarea>
+                <li>Click one of the options below:</li>
+                <table>
+                    <tr>
+                        <td>   
+                            <img src="images/Search.gif" width="75" height="50" onclick="searchForm()">                        
+                        </td>
+                        <td>
+                            <img src="images/Help.gif" width="75" height="50" onclick="helpForm()">                        
+                        </td>
+                        <td>
+                            <img src="images/Cancel.gif" width="75" height="50" onclick="cancelForm()">
+                        </td>
+                    </tr>
+                </table>
+            </ol>
+        </form>
+        <script>
+            function searchForm() {
+                alert("Searching...");
+            }
+            function helpForm() {
+                window.open("help.html");
+            }
+            function cancelForm() {
+                document.getElementById("my_form").reset();
+            }
+        </script>
+    </body>
+</html>
+
+
+    

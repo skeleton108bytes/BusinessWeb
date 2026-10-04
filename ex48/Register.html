@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body style="background-color: #99ccff;">
+        <form name="my_form" id="my_form">
+            <table align="center" width="550">
+                <tr>
+                    <td colspan="4" align="center">
+                        <img src="image/Jackson.gif">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="center">
+                        <h2>Registration Form</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="center">
+                        Register your Jackson Electronics product here
+                    </td>
+                </tr>
+                <tr>
+                    <td>First Name:</td>
+                    <td colspan="3">
+                    <input type="text" name="firstname" style="width: 100px;">
+                    Last Name:
+                    <input type="text" name="lastname" style="width: 100px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address #1:</td>
+                    <td colspan="3">
+                        <input type="text" name="address1" style="width: 200px;">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Address #2:</td>
+                    <td colspan="3">
+                        <input type="text" name="address2" style="width: 200px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td colspan="3">
+                        <input type="text" name="city">
+                        State:
+                        <input type="text" name="state" style="width: 40px;">
+                        Zip:
+                        <input type="text" name="zip" style="width: 60px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td colspan="3">
+                        <input type="text" name="country" value="United States">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Product:</td>
+                    <td colspan="3">
+                        <select name="product">
+                            <option value="ScanMaster">ScanMaster</option>
+                            <option value="PrintMaster">PrintMaster</option>
+                            <option value="FaxMaster">FaxMaster</option>
+                            <option value="CopyMaster">CopyMaster</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date Purchased:</td>
+                    <td colspan="3">
+                        <input type="date" name="date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Serial #:</td>
+                    <td colspan="3">
+                        <input type="text" name="serial">
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">Used for:</td>
+                    <td>
+                        <input type="radio" name="usedfor" value="home" id="home">
+                        <label for="home">Home</label>
+                        <br>
+                        <input type="radio" name="usedfor" value="business" id="business">
+                        <label for="business">Business</label>
+                        <br>
+                        <input type="radio" name="usedfor" value="government" id="government">
+                        <label for="government">Government</label>
+                    </td>
+                    <td colspan="2" valign="top">
+                        <input type="radio" name="usedfor" value="education" id="education">
+                        <label for="education">Educational Institution</label>
+                        <br>
+                        <input type="radio" name="usedfor" value="other" id="other">
+                        <label for="other">Other</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        System (check all that apply):
+                    </td>
+                    <td>
+                        <input type="checkbox" name="system" value="windows" id="windows">
+                        <label for="windows">Windows</label>
+                        <br>
+
+                        <input type="checkbox" name="system" value="macintosh" id="macintosh">
+                        <label for="macintosh">Macintosh</label>
+                    </td>
+                    <td colspan="2">
+                        <input type="checkbox" name="system" value="unix" id="unix">
+                        <label for="unix">UNIX</label>
+                        <br>
+
+                        <input type="checkbox" name="system" value="system_other" id="system_other">
+                        <label for="system_other">Other</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">Comments:</td>
+                    <td colspan="3">
+                        <textarea name="comments" rows="6" cols="40">                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">
+                        <input type="button" value="Click to register" onclick="registerForm()">
+                        <input type="button" value="Click to cancel" onclick="cancelForm()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <script>
+            function registerForm() {
+                alert("Đăng ký");
+            }
+            function cancelForm() {
+                document.getElementById("my_form").reset();
+            }
+        </script>
+</body>
+</html>
