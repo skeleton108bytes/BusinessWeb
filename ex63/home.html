@@ -1,0 +1,276 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Đăng ký thành viên</title>
+    <script>
+        // Hàm tự động nạp Ngày, Tháng, Năm
+        function loadDate() {
+            var day = document.getElementById("day");
+            var month = document.getElementById("month");
+            var year = document.getElementById("year");
+
+            // Nạp ngày từ 01 đến 31
+            for (var i = 1; i <= 31; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.innerHTML = (i < 10 ? "0" : "") + i;
+                day.appendChild(option);
+            }
+
+            // Nạp tháng từ 1 đến 12
+            for (var i = 1; i <= 12; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.innerHTML = i;
+                month.appendChild(option);
+            }
+
+            // Nạp năm từ 1970 đến năm hiện tại
+            var currentYear = new Date().getFullYear();
+
+            for (var i = 1970; i <= currentYear; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.innerHTML = i;
+                year.appendChild(option);
+            }
+
+            // Giá trị mặc định
+            day.value = "1";
+            month.value = "1";
+            year.value = "1970";
+        }
+
+        // Hàm đăng ký thành viên
+        function registerMember() {
+            // Lấy dữ liệu từ form
+            var name = document.getElementById("txtName").value.trim();
+            var email = document.getElementById("txtEmail").value.trim();
+
+            var day = document.getElementById("day").value;
+            var month = document.getElementById("month").value;
+            var year = document.getElementById("year").value;
+
+            var gender = document.querySelector(
+                'input[name="gender"]:checked'
+            );
+
+            var hobbies = document.querySelectorAll(
+                'input[name="hobby"]:checked'
+            );
+
+            var color = document.querySelector(
+                'input[name="color"]:checked'
+            );
+
+            // Kiểm tra tên
+            if (name == "") {
+                alert("Vui lòng nhập Tên!");
+                document.getElementById("txtName").focus();
+                return;
+            }
+
+            // Kiểm tra email
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+                alert("Email không hợp lệ!");
+                document.getElementById("txtEmail").focus();
+                return;
+            }
+
+            // Kiểm tra các lựa chọn bắt buộc
+            if (gender == null || color == null) {
+                alert("Vui lòng chọn Giới tính và Màu yêu thích!");
+                return;
+            }
+
+            // Ghép ngày sinh
+            var birthDate =
+                (day < 10 ? "0" : "") + day + "/" +
+                (month < 10 ? "0" : "") + month + "/" +
+                year;
+
+            // Lấy sở thích
+            var hobbyList = [];
+
+            for (var i = 0; i < hobbies.length; i++) {
+                hobbyList.push(hobbies[i].value);
+            }
+
+            // Lấy giới tính và màu
+            var genderValue = gender.value;
+            var colorValue = color.value;
+
+            // Lấy bảng dữ liệu
+            var tbody = document.getElementById("tbMembers");
+
+            // Tạo hàng mới
+            var tr = document.createElement("tr");
+
+            // Tạo các ô dữ liệu
+            var tdName = document.createElement("td");
+            tdName.innerHTML = name;
+            tr.appendChild(tdName);
+
+            var tdEmail = document.createElement("td");
+            tdEmail.innerHTML = email;
+            tr.appendChild(tdEmail);
+
+            var tdGender = document.createElement("td");
+            tdGender.innerHTML = genderValue;
+            tr.appendChild(tdGender);
+
+            var tdBirth = document.createElement("td");
+            tdBirth.innerHTML = birthDate;
+            tr.appendChild(tdBirth);
+
+            var tdHobby = document.createElement("td");
+            tdHobby.innerHTML = hobbyList.join(", ");
+            tr.appendChild(tdHobby);
+
+            var tdColor = document.createElement("td");
+            tdColor.innerHTML = colorValue;
+            tr.appendChild(tdColor);
+
+            // Sự kiện rê chuột vào dòng
+            tr.onmouseover = function() {
+                tr.style.backgroundColor = "yellow";
+            };
+
+            // Sự kiện rê chuột ra khỏi dòng
+            tr.onmouseout = function() {
+                tr.style.backgroundColor = "white";
+            };
+
+            // Đưa hàng vào bảng
+            tbody.appendChild(tr);
+
+            alert("Đăng ký thành công!");
+        }
+
+        // Hàm xóa dữ liệu form khi bấm Tiếp
+        function nextForm() {
+            document.getElementById("frmMember").reset();
+
+            // Đặt lại ngày sinh mặc định
+            document.getElementById("day").value = "1";
+            document.getElementById("month").value = "1";
+            document.getElementById("year").value = "1970";
+
+            // Focus vào ô Tên
+            document.getElementById("txtName").focus();
+        }
+
+        // Nạp dữ liệu ngày tháng năm khi trang được tải
+        window.onload = function() {
+            loadDate();
+        };
+    </script>
+</head>
+
+<body>
+    <div style="border: 1px solid blue; padding: 6px; width: 660px;">
+
+        <h1>Đăng ký thành viên</h1>
+        <hr>
+
+        <form id="frmMember" onsubmit="return false;">
+
+            Tên(*)
+            <input type="text" id="txtName">
+            <br>
+
+            Ngày sinh(*)
+            Ngày:
+            <select id="day"></select>
+
+            Tháng:
+            <select id="month"></select>
+
+            Năm:
+            <select id="year"></select>
+            <br>
+
+            Giới tính(*)
+            <input type="radio" name="gender" value="Nam" checked>Nam
+            <input type="radio" name="gender" value="Nữ">Nữ
+            <br>
+
+            Email(*)
+            <input type="text" id="txtEmail">
+            <br><br>
+
+            Sở thích của bạn:
+            <br>
+
+            <input type="checkbox" name="hobby" value="Mua sắm">
+            Mua sắm
+            <br>
+
+            <input type="checkbox" name="hobby" value="Du lịch">
+            Du lịch
+            <br>
+
+            <input type="checkbox" name="hobby" value="Tán gẫu">
+            Tán gẫu
+            <br>
+
+            <input type="checkbox" name="hobby" value="Đọc sách">
+            Đọc sách
+            <br>
+
+            <input type="checkbox" name="hobby" value="Nghe nhạc">
+            Nghe nhạc
+            <br>
+
+            Màu yêu thích của bạn:
+            <br>
+            <input type="radio" name="color" value="Màu xanh da trời">
+            <span style="background-color: blue; color: white;">
+                Màu xanh da trời
+            </span>
+            <br>
+
+            <input type="radio" name="color" value="Màu đỏ">
+            <span style="background-color: red;">Màu đỏ</span>
+            <br>
+
+            <input type="radio" name="color" value="Màu vàng">
+            <span style="background-color: yellow;">Màu vàng</span>
+            <br>
+
+            <input type="radio" name="color" value="Màu xanh lá cây">
+            <span style="background-color: green; color: white;">
+                Màu xanh lá cây
+            </span>
+            <br>
+
+            <input type="radio" name="color" value="Màu xanh tím">
+            <span style="background-color: violet;">Màu xanh tím</span>
+            <br><br>
+
+            <input type="button" value="Đăng ký"
+                   onclick="registerMember()">
+
+            <input type="button" value="Tiếp"
+                   onclick="nextForm()">
+        </form>
+        <br>
+        <table border="1" id="tblMembers"
+               style="border-collapse: collapse; width: 100%;">
+            <thead style="background-color: blue; color: white;">
+                <tr>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Giới tính</th>
+                    <th>Năm sinh</th>
+                    <th>Sở thích</th>
+                    <th>Màu yêu thích</th>
+                </tr>
+            </thead>
+            <tbody id="tbMembers"></tbody>
+        </table>
+    </div>
+</body>
+</html>
